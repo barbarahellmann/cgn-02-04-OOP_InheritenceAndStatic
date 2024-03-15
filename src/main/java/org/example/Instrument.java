@@ -1,6 +1,9 @@
 package org.example;
 
 
+import java.util.Objects;
+
+//Elernklasse -> Superklasse genannt
 public class Instrument {
             double price;
             String color;
@@ -12,4 +15,43 @@ public class Instrument {
         public void makeNoise(){
             System.out.println("Instrument sounds");
         }
+
+    public double getPrice() {
+
+            return price;
+    }
+
+    public void setPrice(double price) {
+
+            this.price = price;
+    }
+
+    public String getColor() {
+            return color;
+    }
+
+    public void setColor(String color) {
+            this.color = color;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Instrument that = (Instrument) o;
+        return Double.compare(price, that.price) == 0 && Objects.equals(color, that.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(price, color);
+    }
+
+    @Override
+    public String toString() {
+        return "Instrument{" +
+                "price=" + price +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }
